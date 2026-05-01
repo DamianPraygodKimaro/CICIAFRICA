@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events — Cici Africa</title>
+  <meta name="description" content="Cici Africa events — past highlights, upcoming events, and how to sign up." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* ── EVENTS PAGE EXTRAS ── */
+    .upcoming-list { display: flex; flex-direction: column; gap: 1rem; }
+
+    /* Countdown strip */
+    .countdown-strip {
+      background: var(--orange); color: var(--white);
+      padding: 1.25rem 0; text-align: center;
+    }
+    .countdown-strip__inner {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1.5rem; flex-wrap: wrap;
+    }
+    .countdown-strip__label {
+      font-family: var(--font-label); font-size: 0.85rem; letter-spacing: 0.15em;
+    }
+    .countdown-boxes { display: flex; gap: 0.5rem; }
+    .countdown-box {
+      background: rgba(255,255,255,0.18); border-radius: var(--radius-sm);
+      padding: 0.4rem 0.75rem; text-align: center; min-width: 52px;
+    }
+    .countdown-box__num {
+      font-family: var(--font-label); font-size: 1.5rem; line-height: 1; display: block;
+    }
+    .countdown-box__unit { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8; }
+
+    /* Past event thumb gradients */
+    .ev-thumb-1 { background: linear-gradient(135deg,#1a0a00,var(--orange)); }
+    .ev-thumb-2 { background: linear-gradient(135deg,var(--gold),var(--brown)); }
+    .ev-thumb-3 { background: linear-gradient(135deg,#2d1a00,var(--orange)); }
+
+    /* Date box colours */
+    .date-box--orange { background: var(--orange); color: var(--white); }
+    .date-box--gold   { background: var(--gold);   color: var(--white); }
+    .date-box--brown  { background: var(--brown);  color: var(--white); }
+
+    @media (max-width: 600px) {
+      .countdown-strip__inner { flex-direction: column; gap: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════ NAVBAR ═══════ -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo" aria-label="Cici Africa Home">
+      <svg class="navbar__logo-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M40 10 L50 20 L60 32 L64 50 L54 66 L40 72 L28 62 L24 44 L30 26 Z" stroke="#b07d2e" stroke-width="3" fill="none"/>
+        <path d="M40 72 L36 78 M40 72 L44 78" stroke="#b07d2e" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="40" cy="34" r="5" fill="#c2410f"/>
+      </svg>
+      <div class="navbar__logo-text">
+        <span class="cici">Cici</span>
+        <span class="africa">Africa</span>
+      </div>
+    </a>
+    <div class="navbar__links">
+      <a href="index.html"    class="navbar__link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="services.html" class="navbar__link"><i class="fa-solid fa-video"></i> Services</a>
+      <a href="culture.html"  class="navbar__link"><i class="fa-solid fa-fire"></i> Culture Feed</a>
+      <a href="talents.html"  class="navbar__link"><i class="fa-solid fa-star"></i> Talents</a>
+      <a href="events.html"   class="navbar__link active"><i class="fa-solid fa-calendar-days"></i> Events</a>
+    </div>
+    <a href="#upcoming-events" class="navbar__cta">Upcoming Events →</a>
+    <button class="navbar__hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html"    class="mobile-menu__link">🏠 Home</a>
+    <a href="services.html" class="mobile-menu__link">🎥 Services</a>
+    <a href="culture.html"  class="mobile-menu__link">🔥 Culture Feed</a>
+    <a href="talents.html"  class="mobile-menu__link">⭐ Talents</a>
+    <a href="events.html"   class="mobile-menu__link" style="border-bottom:none">📅 Events</a>
+    <a href="#upcoming-events" class="btn btn--primary btn--block" style="margin-top:1rem">Upcoming Events →</a>
+  </div>
+</nav>
+
+<!-- ═══════ COUNTDOWN STRIP ═══════ -->
+<div class="countdown-strip" role="timer" aria-label="Countdown to next event">
+  <div class="countdown-strip__inner">
+    <span class="countdown-strip__label">🎟️ NEXT EVENT — CICI JAMS LIVE · ZANZIBAR · MAY 10</span>
+    <div class="countdown-boxes" id="countdown-boxes">
+      <div class="countdown-box">
+        <span class="countdown-box__num" id="cd-days">--</span>
+        <span class="countdown-box__unit">days</span>
+      </div>
+      <div class="countdown-box">
+        <span class="countdown-box__num" id="cd-hours">--</span>
+        <span class="countdown-box__unit">hrs</span>
+      </div>
+      <div class="countdown-box">
+        <span class="countdown-box__num" id="cd-mins">--</span>
+        <span class="countdown-box__unit">min</span>
+      </div>
+      <div class="countdown-box">
+        <span class="countdown-box__num" id="cd-secs">--</span>
+        <span class="countdown-box__unit">sec</span>
+      </div>
+    </div>
+    <a href="#upcoming-events" class="btn btn--outline btn--sm">Sign Up →</a>
+  </div>
+</div>
+
+<!-- ═══════ PAGE HERO ═══════ -->
+<section class="page-hero">
+  <div class="page-hero__pattern" aria-hidden="true"></div>
+  <div class="container page-hero__content">
+    <span class="section-label section-label--light fade-up">What's Happening</span>
+    <h1 class="section-title section-title--light fade-up delay-1">Events &amp; <span class="gold">Experiences</span></h1>
+    <p class="section-desc section-desc--light fade-up delay-2">Creative gatherings, industry nights, and cultural experiences hosted by Cici Africa and our partners across Tanzania.</p>
+  </div>
+</section>
+
+<!-- ═══════ PAST EVENTS ═══════ -->
+<section class="section bg-white">
+  <div class="container">
+    <span class="section-label fade-up">Memories &amp; Highlights</span>
+    <h2 class="section-title fade-up delay-1">Previous <span>Events</span></h2>
+    <p class="section-desc mb-xl fade-up delay-2">Relive the moments — watch highlight reels and full recaps from past Cici Africa events.</p>
+
+    <div class="events-grid">
+
+      <div class="event-card fade-up delay-1">
+        <div class="event-card__thumb ev-thumb-1">
+          🎭
+          <div class="event-card__thumb-label">Past Event</div>
+        </div>
+        <div class="event-card__body">
+          <div class="event-card__date">March 15, 2026 · Dar es Salaam</div>
+          <div class="event-card__title">Cici Africa Creative Summit 2026</div>
+          <p class="event-card__desc">A full-day creative industry summit connecting Tanzanian talents, brands, and investors. 200+ attendees, 12 speakers, unforgettable energy.</p>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="feed-link">
+            <i class="fa-brands fa-youtube"></i> Watch Highlights <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="event-card fade-up delay-2">
+        <div class="event-card__thumb ev-thumb-2">
+          🎵
+          <div class="event-card__thumb-label">Past Event</div>
+        </div>
+        <div class="event-card__body">
+          <div class="event-card__date">January 20, 2026 · Dar es Salaam</div>
+          <div class="event-card__title">Cici Jams Live — New Year Edition</div>
+          <p class="event-card__desc">An intimate music night celebrating emerging African artists. Live performances, networking, and good vibes to kick off 2026.</p>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="feed-link">
+            <i class="fa-brands fa-youtube"></i> Watch Highlights <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="event-card fade-up delay-3">
+        <div class="event-card__thumb ev-thumb-3">
+          📸
+          <div class="event-card__thumb-label">Past Event</div>
+        </div>
+        <div class="event-card__body">
+          <div class="event-card__date">November 8, 2025 · Dar es Salaam</div>
+          <div class="event-card__title">Photography Masterclass</div>
+          <p class="event-card__desc">A hands-on workshop with professional photographers covering commercial photography and brand visual storytelling.</p>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="feed-link">
+            <i class="fa-brands fa-youtube"></i> Watch Recap <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="event-card fade-up delay-1">
+        <div class="event-card__thumb" style="background:linear-gradient(135deg,var(--gold),var(--brown))">
+          🌍
+          <div class="event-card__thumb-label">Past Event</div>
+        </div>
+        <div class="event-card__body">
+          <div class="event-card__date">September 5, 2025 · Dar es Salaam</div>
+          <div class="event-card__title">Creative Economy Forum</div>
+          <p class="event-card__desc">A panel discussion on the business of creativity in Tanzania — monetisation, branding, and sustainable careers in the arts.</p>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="feed-link">
+            <i class="fa-brands fa-youtube"></i> Watch Full Panel <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="event-card fade-up delay-2">
+        <div class="event-card__thumb" style="background:linear-gradient(135deg,#3d1a02,var(--orange))">
+          🎬
+          <div class="event-card__thumb-label">Past Event</div>
+        </div>
+        <div class="event-card__body">
+          <div class="event-card__date">July 12, 2025 · Dar es Salaam</div>
+          <div class="event-card__title">Short Film Screening Night</div>
+          <p class="event-card__desc">An evening celebrating short films by emerging Tanzanian directors. Community feedback, industry networking, and awards.</p>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="feed-link">
+            <i class="fa-brands fa-youtube"></i> Watch Highlights <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="event-card fade-up delay-3">
+        <div class="event-card__thumb" style="background:linear-gradient(135deg,var(--brown),var(--gold))">
+          🤝
+          <div class="event-card__thumb-label">Past Event</div>
+        </div>
+        <div class="event-card__body">
+          <div class="event-card__date">April 22, 2025 · Dar es Salaam</div>
+          <div class="event-card__title">Brand &amp; Creative Speed Networking</div>
+          <p class="event-card__desc">Brands met creatives, creatives met each other — a fast-paced networking event that sparked real collaborations.</p>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="feed-link">
+            <i class="fa-brands fa-youtube"></i> Watch Recap <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ UPCOMING EVENTS ═══════ -->
+<section class="section" id="upcoming-events">
+  <div class="container">
+    <span class="section-label fade-up">Don't Miss Out</span>
+    <h2 class="section-title fade-up delay-1">Upcoming <span>Events</span></h2>
+    <p class="section-desc mb-xl fade-up delay-2">Sign up free for any upcoming event — we'll send you all the details and reminders.</p>
+
+    <div class="upcoming-list">
+
+      <div class="upcoming-row fade-up delay-1">
+        <div class="upcoming-row__date-box date-box--orange">
+          <span class="upcoming-row__date-num">10</span>
+          <span class="upcoming-row__date-mon">May</span>
+        </div>
+        <div class="upcoming-row__info">
+          <div class="upcoming-row__title">Cici Jams Live — Zanzibar Edition</div>
+          <div class="upcoming-row__loc">📍 Stone Town, Zanzibar &nbsp;·&nbsp; 7:00 PM &nbsp;·&nbsp; <span class="badge badge--orange">Music Night</span></div>
+        </div>
+        <button class="btn btn--primary btn--sm" data-rsvp="Cici Jams Live – Zanzibar Edition">
+          Sign Up Free →
+        </button>
+      </div>
+
+      <div class="upcoming-row fade-up delay-2">
+        <div class="upcoming-row__date-box date-box--gold">
+          <span class="upcoming-row__date-num">22</span>
+          <span class="upcoming-row__date-mon">Jun</span>
+        </div>
+        <div class="upcoming-row__info">
+          <div class="upcoming-row__title">Creative Industry Networking Night</div>
+          <div class="upcoming-row__loc">📍 Survey, Dar es Salaam &nbsp;·&nbsp; 6:00 PM &nbsp;·&nbsp; <span class="badge">Networking</span></div>
+        </div>
+        <button class="btn btn--primary btn--sm" data-rsvp="Creative Industry Networking Night">
+          Sign Up Free →
+        </button>
+      </div>
+
+      <div class="upcoming-row fade-up delay-3">
+        <div class="upcoming-row__date-box date-box--brown">
+          <span class="upcoming-row__date-num">05</span>
+          <span class="upcoming-row__date-mon">Jul</span>
+        </div>
+        <div class="upcoming-row__info">
+          <div class="upcoming-row__title">Documentary Screening &amp; Panel — The Creative Economy</div>
+          <div class="upcoming-row__loc">📍 Dar es Salaam · TBA &nbsp;·&nbsp; <span class="badge">Film &amp; Panel</span></div>
+        </div>
+        <button class="btn btn--primary btn--sm" data-rsvp="Documentary Screening – The Creative Economy">
+          Sign Up Free →
+        </button>
+      </div>
+
+      <div class="upcoming-row fade-up delay-4">
+        <div class="upcoming-row__date-box date-box--orange">
+          <span class="upcoming-row__date-num">15</span>
+          <span class="upcoming-row__date-mon">Aug</span>
+        </div>
+        <div class="upcoming-row__info">
+          <div class="upcoming-row__title">Cici Africa Creative Summit 2026 — Season 2</div>
+          <div class="upcoming-row__loc">📍 Dar es Salaam · TBA &nbsp;·&nbsp; <span class="badge badge--orange">Summit</span></div>
+        </div>
+        <button class="btn btn--primary btn--sm" data-rsvp="Cici Africa Creative Summit 2026 Season 2">
+          Get Notified →
+        </button>
+      </div>
+
+      <div class="upcoming-row fade-up delay-5">
+        <div class="upcoming-row__date-box date-box--gold">
+          <span class="upcoming-row__date-num">20</span>
+          <span class="upcoming-row__date-mon">Sep</span>
+        </div>
+        <div class="upcoming-row__info">
+          <div class="upcoming-row__title">Photography Masterclass — Season 2</div>
+          <div class="upcoming-row__loc">📍 Dar es Salaam · TBA &nbsp;·&nbsp; <span class="badge">Workshop</span></div>
+        </div>
+        <button class="btn btn--primary btn--sm" data-rsvp="Photography Masterclass Season 2">
+          Get Notified →
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SUBSCRIBE BANNER ═══════ -->
+<section class="section--sm">
+  <div class="container">
+    <div class="subscribe-banner fade-up">
+      <h3>Never Miss an <span style="color:var(--gold-light)">Event</span></h3>
+      <p>Subscribe to get notified about every upcoming Cici Africa event, workshop and gathering — straight to your inbox.</p>
+      <form class="subscribe-form" novalidate>
+        <input class="subscribe-input" type="email" placeholder="Your email address" aria-label="Email address" required>
+        <button type="submit" class="btn btn--gold">Subscribe →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo"><span class="cici">Cici</span><span class="africa">Africa</span></div>
+        <p class="footer__tagline">Where African creativity meets opportunity.<br>Dar es Salaam, Tanzania.</p>
+        <div class="footer__socials">
+          <a href="https://www.instagram.com/ciciafrica_creatives" target="_blank" rel="noopener" class="footer__social" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@ciciafrica_creatives" target="_blank" rel="noopener" class="footer__social" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://www.youtube.com/@ciciafrica_creatives" target="_blank" rel="noopener" class="footer__social" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.linkedin.com/company/ciciafrica" target="_blank" rel="noopener" class="footer__social" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__heading">Navigate</div>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="culture.html">Culture Feed</a></li>
+          <li><a href="talents.html">Talents</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__heading">Events</div>
+        <ul class="footer__links">
+          <li><a href="events.html">Past Events</a></li>
+          <li><a href="#upcoming-events">Upcoming Events</a></li>
+          <li><a href="#upcoming-events">Sign Up</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__heading">Contact</div>
+        <ul class="footer__links">
+          <li><a href="mailto:ciciafrica@outlook.com">ciciafrica@outlook.com</a></li>
+          <li><a href="tel:+255796169961">+255 796 169 961</a></li>
+          <li><a href="#">@ciciafrica_creatives</a></li>
+          <li><span>Survey, Dar es Salaam</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Cici Africa Creatives Co. Ltd. All rights reserved.</span>
+      <span>Made with ❤️ for African creatives</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>
+  /* ── Live countdown to May 10, 2026 7PM ── */
+  (function() {
+    const target = new Date('2026-05-10T19:00:00+03:00').getTime();
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      const now  = Date.now();
+      const diff = target - now;
+
+      if (diff <= 0) {
+        document.getElementById('countdown-boxes').innerHTML =
+          '<span style="font-family:var(--font-label);font-size:1rem;letter-spacing:0.12em">🎉 EVENT IS LIVE!</span>';
+        return;
+      }
+
+      const days  = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins  = Math.floor((diff % 3600000) / 60000);
+      const secs  = Math.floor((diff % 60000) / 1000);
+
+      document.getElementById('cd-days').textContent  = pad(days);
+      document.getElementById('cd-hours').textContent = pad(hours);
+      document.getElementById('cd-mins').textContent  = pad(mins);
+      document.getElementById('cd-secs').textContent  = pad(secs);
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
+</body>
+</html>

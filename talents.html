@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Talents — Cici Africa</title>
+  <meta name="description" content="Discover, book, and join the Cici Africa talent network — models, musicians, content creators and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* ── TALENTS PAGE EXTRAS ── */
+    .talent-filters {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem;
+    }
+    .filter-btn {
+      background: var(--white); border: 1.5px solid var(--cream-dark);
+      border-radius: var(--radius-pill); padding: 0.45rem 1.1rem;
+      font-family: var(--font-body); font-size: 0.82rem; font-weight: 600;
+      color: var(--text-muted); cursor: pointer; transition: all 0.2s;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--orange); border-color: var(--orange);
+      color: var(--white);
+    }
+
+    .join-cta-box {
+      background: var(--cream); border: 1.5px dashed var(--cream-dark);
+      border-radius: var(--radius-xl); padding: 3rem 2rem;
+      text-align: center; margin-top: 3rem;
+    }
+
+    .form-card {
+      background: var(--white); border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-xl); padding: 2.5rem;
+      max-width: 720px;
+    }
+
+    /* talent img placeholder */
+    .talent-card__img {
+      width: 100%; height: 260px;
+      object-fit: cover; object-position: top;
+      display: block;
+    }
+    .talent-card__img-placeholder {
+      width: 100%; height: 260px;
+      background: linear-gradient(135deg, var(--brown), var(--orange));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem; color: rgba(255,255,255,0.2);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════ NAVBAR ═══════ -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo" aria-label="Cici Africa Home">
+      <svg class="navbar__logo-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M40 10 L50 20 L60 32 L64 50 L54 66 L40 72 L28 62 L24 44 L30 26 Z" stroke="#b07d2e" stroke-width="3" fill="none"/>
+        <path d="M40 72 L36 78 M40 72 L44 78" stroke="#b07d2e" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="40" cy="34" r="5" fill="#c2410f"/>
+      </svg>
+      <div class="navbar__logo-text">
+        <span class="cici">Cici</span>
+        <span class="africa">Africa</span>
+      </div>
+    </a>
+    <div class="navbar__links">
+      <a href="index.html"    class="navbar__link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="services.html" class="navbar__link"><i class="fa-solid fa-video"></i> Services</a>
+      <a href="culture.html"  class="navbar__link"><i class="fa-solid fa-fire"></i> Culture Feed</a>
+      <a href="talents.html"  class="navbar__link active"><i class="fa-solid fa-star"></i> Talents</a>
+      <a href="events.html"   class="navbar__link"><i class="fa-solid fa-calendar-days"></i> Events</a>
+    </div>
+    <a href="#join-talent" class="navbar__cta">Join as Talent →</a>
+    <button class="navbar__hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html"    class="mobile-menu__link">🏠 Home</a>
+    <a href="services.html" class="mobile-menu__link">🎥 Services</a>
+    <a href="culture.html"  class="mobile-menu__link">🔥 Culture Feed</a>
+    <a href="talents.html"  class="mobile-menu__link">⭐ Talents</a>
+    <a href="events.html"   class="mobile-menu__link" style="border-bottom:none">📅 Events</a>
+    <a href="#join-talent" class="btn btn--primary btn--block" style="margin-top:1rem">Join as Talent →</a>
+  </div>
+</nav>
+
+<!-- ═══════ PAGE HERO ═══════ -->
+<section class="page-hero">
+  <div class="page-hero__pattern" aria-hidden="true"></div>
+  <div class="container page-hero__content">
+    <span class="section-label section-label--light fade-up">Africa's Best</span>
+    <h1 class="section-title section-title--light fade-up delay-1">Discover <span class="gold">Talents</span></h1>
+    <p class="section-desc section-desc--light fade-up delay-2">Models, musicians, artists, content creators and more — all connected through Cici Africa's creative network.</p>
+  </div>
+</section>
+
+<!-- ═══════ TABS ═══════ -->
+<section class="section" id="talents-tabs-section">
+  <div class="container">
+
+    <div class="inner-tabs" role="tablist" aria-label="Talents sections">
+      <button class="inner-tab active" role="tab" data-tab="tl-showcase" id="tab-tl-showcase" aria-selected="true" aria-controls="tl-showcase">
+        🌟 All Talents
+      </button>
+      <button class="inner-tab" role="tab" data-tab="tl-book" id="tab-tl-book" aria-selected="false" aria-controls="tl-book">
+        🤝 Book a Talent
+      </button>
+      <button class="inner-tab" role="tab" data-tab="tl-join" id="tab-tl-join" aria-selected="false" aria-controls="tl-join">
+        ✍️ Join as Talent
+      </button>
+    </div>
+
+    <!-- ── ALL TALENTS ── -->
+    <div class="tab-panel active" id="tl-showcase" role="tabpanel" aria-labelledby="tab-tl-showcase">
+
+      <div class="talent-filters" role="group" aria-label="Filter talents by category">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="model">Models</button>
+        <button class="filter-btn" data-filter="musician">Musicians</button>
+        <button class="filter-btn" data-filter="creator">Content Creators</button>
+        <button class="filter-btn" data-filter="filmmaker">Filmmakers</button>
+        <button class="filter-btn" data-filter="artist">Artists</button>
+      </div>
+
+      <div class="talents-grid" id="talents-grid">
+
+        <div class="talent-card fade-up delay-1" data-category="creator filmmaker">
+          <img class="talent-card__img" src="assets/images/isack.jpg" alt="Isack Michuzi"
+               onerror="this.outerHTML='<div class=\'talent-card__img-placeholder\'>🎬</div>'">
+          <div class="talent-card__body">
+            <div class="talent-card__category">Filmmaker / Director</div>
+            <div class="talent-card__name">Isack Michuzi</div>
+            <p class="talent-card__desc">Creative technologist and filmmaker. Behind the lens for documentary and commercial production projects across East Africa.</p>
+            <div class="talent-card__socials">
+              <a href="#" class="talent-social" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="talent-social" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="#" class="talent-social" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <button class="btn btn--primary btn--block btn--sm" onclick="document.querySelector('[data-tab=\'tl-book\']').click()">
+              Book for Campaign →
+            </button>
+          </div>
+        </div>
+
+        <div class="talent-card fade-up delay-2" data-category="model creator">
+          <img class="talent-card__img" src="assets/images/lisa.jpg" alt="Lisa Francis"
+               onerror="this.outerHTML='<div class=\'talent-card__img-placeholder\'>💃</div>'">
+          <div class="talent-card__body">
+            <div class="talent-card__category">Model / Content Creator</div>
+            <div class="talent-card__name">Lisa Francis</div>
+            <p class="talent-card__desc">Model and creative personality based in Dar es Salaam. Specialises in fashion, lifestyle content, and brand campaigns.</p>
+            <div class="talent-card__socials">
+              <a href="#" class="talent-social" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="talent-social" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            <button class="btn btn--primary btn--block btn--sm" onclick="document.querySelector('[data-tab=\'tl-book\']').click()">
+              Book for Campaign →
+            </button>
+          </div>
+        </div>
+
+        <div class="talent-card fade-up delay-3" data-category="artist creator filmmaker">
+          <img class="talent-card__img" src="assets/images/antoinette.jpg" alt="Antoinette Kyababa"
+               onerror="this.outerHTML='<div class=\'talent-card__img-placeholder\'>🎶</div>'">
+          <div class="talent-card__body">
+            <div class="talent-card__category">Creative Director / Strategist</div>
+            <div class="talent-card__name">Antoinette Kyababa</div>
+            <p class="talent-card__desc">Visionary creative director crafting brand narratives and leading high-impact productions across Africa.</p>
+            <div class="talent-card__socials">
+              <a href="#" class="talent-social" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="talent-social" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="#" class="talent-social" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            <button class="btn btn--primary btn--block btn--sm" onclick="document.querySelector('[data-tab=\'tl-book\']').click()">
+              Book for Campaign →
+            </button>
+          </div>
+        </div>
+
+        <div class="talent-card fade-up delay-1" data-category="musician">
+          <div class="talent-card__img-placeholder" style="background:linear-gradient(135deg,var(--gold),var(--brown))">🎵</div>
+          <div class="talent-card__body">
+            <div class="talent-card__category">Musician / Performer</div>
+            <div class="talent-card__name">Your Talent Here</div>
+            <p class="talent-card__desc">Are you a musician or performer? Sign up and get featured on the Cici Africa talent roster.</p>
+            <div class="talent-card__socials">
+              <a href="#" class="talent-social"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="talent-social"><i class="fa-brands fa-spotify"></i></a>
+            </div>
+            <button class="btn btn--outline-dark btn--block btn--sm" onclick="document.querySelector('[data-tab=\'tl-join\']').click()">
+              Join as Talent →
+            </button>
+          </div>
+        </div>
+
+        <div class="talent-card fade-up delay-2" data-category="creator">
+          <div class="talent-card__img-placeholder" style="background:linear-gradient(135deg,var(--orange),#2d1a00)">📱</div>
+          <div class="talent-card__body">
+            <div class="talent-card__category">TikToker / Content Creator</div>
+            <div class="talent-card__name">Your Talent Here</div>
+            <p class="talent-card__desc">TikTokers and content creators — get discovered by brands looking for authentic African voices.</p>
+            <div class="talent-card__socials">
+              <a href="#" class="talent-social"><i class="fa-brands fa-tiktok"></i></a>
+              <a href="#" class="talent-social"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <button class="btn btn--outline-dark btn--block btn--sm" onclick="document.querySelector('[data-tab=\'tl-join\']').click()">
+              Join as Talent →
+            </button>
+          </div>
+        </div>
+
+        <div class="talent-card fade-up delay-3" data-category="model">
+          <div class="talent-card__img-placeholder" style="background:linear-gradient(135deg,#2d1a00,var(--gold-light))">👗</div>
+          <div class="talent-card__body">
+            <div class="talent-card__category">Model</div>
+            <div class="talent-card__name">Your Talent Here</div>
+            <p class="talent-card__desc">Models — connect with campaigns, brand shoots, and events through the Cici Africa network.</p>
+            <div class="talent-card__socials">
+              <a href="#" class="talent-social"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <button class="btn btn--outline-dark btn--block btn--sm" onclick="document.querySelector('[data-tab=\'tl-join\']').click()">
+              Join as Talent →
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="join-cta-box fade-up">
+        <h3 style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--brown);margin-bottom:0.5rem">Are you a talented creative?</h3>
+        <p style="color:var(--text-muted);font-size:0.9rem;max-width:480px;margin:0 auto 1.5rem">Sign up and get featured on the Cici Africa talent roster — visible to brands, agencies, and partners across Africa.</p>
+        <button class="btn btn--primary btn--lg" onclick="document.querySelector('[data-tab=\'tl-join\']').click()">
+          Sign Up as a Talent →
+        </button>
+      </div>
+    </div>
+
+    <!-- ── BOOK A TALENT ── -->
+    <div class="tab-panel" id="tl-book" role="tabpanel" aria-labelledby="tab-tl-book">
+      <h2 class="section-title fade-up">Book or <span>Work with a Talent</span></h2>
+      <p class="section-desc mb-xl fade-up delay-1">Fill out the form below and our team will match you with the right talent for your campaign or project.</p>
+      <div class="form-card fade-in delay-2">
+        <form id="talent-booking-form" class="form" novalidate>
+          <div class="form__grid">
+            <div class="form__group">
+              <label class="form__label" for="tb-name">Your Full Name *</label>
+              <input class="form__input" type="text" id="tb-name" name="name" placeholder="Full name" required>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="tb-brand">Brand / Company</label>
+              <input class="form__input" type="text" id="tb-brand" name="brand" placeholder="Brand or company name">
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="tb-email">Email *</label>
+              <input class="form__input" type="email" id="tb-email" name="email" placeholder="Email address" required>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="tb-phone">Phone</label>
+              <input class="form__input" type="tel" id="tb-phone" name="phone" placeholder="+255 ...">
+            </div>
+            <div class="form__group form__group--full">
+              <label class="form__label" for="tb-type">Type of Talent Needed *</label>
+              <select class="form__select" id="tb-type" name="type" required>
+                <option value="">Select talent type...</option>
+                <option>Model</option>
+                <option>Musician / Artist</option>
+                <option>TikToker / Content Creator</option>
+                <option>Photographer</option>
+                <option>Videographer / Director</option>
+                <option>Voice Artist</option>
+                <option>Actor / Actress</option>
+                <option>Dancer / Performer</option>
+                <option>Other Creative</option>
+              </select>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="tb-date">Project Date / Period</label>
+              <input class="form__input" type="text" id="tb-date" name="date" placeholder="e.g. May 2026 or 15–20 June">
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="tb-budget">Budget Range (TZS)</label>
+              <select class="form__select" id="tb-budget" name="budget">
+                <option value="">Prefer not to say</option>
+                <option>Under 200,000</option>
+                <option>200K – 1M</option>
+                <option>1M – 5M</option>
+                <option>5M+</option>
+              </select>
+            </div>
+            <div class="form__group form__group--full">
+              <label class="form__label" for="tb-desc">Project Description *</label>
+              <textarea class="form__textarea" id="tb-desc" name="description"
+                placeholder="Describe the campaign, project or collaboration you need talent for..." required></textarea>
+            </div>
+          </div>
+          <div class="form__submit">
+            <button type="submit" class="btn btn--primary btn--block btn--lg">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Send Talent Request
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ── JOIN AS TALENT ── -->
+    <div class="tab-panel" id="tl-join" role="tabpanel" aria-labelledby="tab-tl-join">
+      <div id="join-talent">
+        <h2 class="section-title fade-up">Sign Up &amp; <span>Work With Us</span></h2>
+        <p class="section-desc mb-xl fade-up delay-1">Are you a model, musician, content creator, artist or any other creative? Join the Cici Africa talent network and get discovered.</p>
+        <div class="form-card fade-in delay-2">
+          <form id="talent-signup-form" class="form" novalidate>
+            <div class="form__grid">
+              <div class="form__group">
+                <label class="form__label" for="ts-name">Full Name *</label>
+                <input class="form__input" type="text" id="ts-name" name="name" placeholder="Your full name" required>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="ts-stage">Stage / Brand Name</label>
+                <input class="form__input" type="text" id="ts-stage" name="stage" placeholder="If different from above">
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="ts-email">Email *</label>
+                <input class="form__input" type="email" id="ts-email" name="email" placeholder="Your email" required>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="ts-phone">Phone *</label>
+                <input class="form__input" type="tel" id="ts-phone" name="phone" placeholder="+255 ..." required>
+              </div>
+              <div class="form__group form__group--full">
+                <label class="form__label" for="ts-cat">Talent Category *</label>
+                <select class="form__select" id="ts-cat" name="category" required>
+                  <option value="">Select your category...</option>
+                  <option>Model</option>
+                  <option>Musician / Singer</option>
+                  <option>Content Creator / TikToker</option>
+                  <option>Photographer</option>
+                  <option>Videographer / Director</option>
+                  <option>Actor / Actress</option>
+                  <option>Dancer / Performer</option>
+                  <option>Visual Artist</option>
+                  <option>Voice Artist</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="ts-ig">Instagram Handle</label>
+                <input class="form__input" type="text" id="ts-ig" name="instagram" placeholder="@yourhandle">
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="ts-tt">TikTok Handle</label>
+                <input class="form__input" type="text" id="ts-tt" name="tiktok" placeholder="@yourhandle">
+              </div>
+              <div class="form__group form__group--full">
+                <label class="form__label" for="ts-portfolio">Portfolio / Showreel Link</label>
+                <input class="form__input" type="url" id="ts-portfolio" name="portfolio" placeholder="https://...">
+              </div>
+              <div class="form__group form__group--full">
+                <label class="form__label" for="ts-bio">Tell Us About Yourself *</label>
+                <textarea class="form__textarea" id="ts-bio" name="bio"
+                  placeholder="What makes you unique? Share your experience, skills, and the kind of work you want to do..." required></textarea>
+              </div>
+            </div>
+            <div class="form__submit">
+              <button type="submit" class="btn btn--primary btn--block btn--lg">
+                <i class="fa-solid fa-star" aria-hidden="true"></i> Submit My Profile
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo"><span class="cici">Cici</span><span class="africa">Africa</span></div>
+        <p class="footer__tagline">Where African creativity meets opportunity.<br>Dar es Salaam, Tanzania.</p>
+        <div class="footer__socials">
+          <a href="https://www.instagram.com/ciciafrica_creatives" target="_blank" rel="noopener" class="footer__social" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@ciciafrica_creatives" target="_blank" rel="noopener" class="footer__social" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://www.youtube.com/@ciciafrica_creatives" target="_blank" rel="noopener" class="footer__social" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.linkedin.com/company/ciciafrica" target="_blank" rel="noopener" class="footer__social" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__heading">Navigate</div>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="culture.html">Culture Feed</a></li>
+          <li><a href="talents.html">Talents</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__heading">Talents</div>
+        <ul class="footer__links">
+          <li><a href="talents.html">Discover Talents</a></li>
+          <li><button onclick="document.querySelector('[data-tab=\'tl-book\']').click()">Book a Talent</button></li>
+          <li><button onclick="document.querySelector('[data-tab=\'tl-join\']').click()">Join as Talent</button></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__heading">Contact</div>
+        <ul class="footer__links">
+          <li><a href="mailto:ciciafrica@outlook.com">ciciafrica@outlook.com</a></li>
+          <li><a href="tel:+255796169961">+255 796 169 961</a></li>
+          <li><a href="#">@ciciafrica_creatives</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Cici Africa Creatives Co. Ltd. All rights reserved.</span>
+      <span>Made with ❤️ for African creatives</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>
+  /* ── Talent category filter ── */
+  (function() {
+    const btns  = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('#talents-grid .talent-card');
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          const cats = card.dataset.category || '';
+          const show = filter === 'all' || cats.includes(filter);
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  })();
+
+  /* open join tab if anchor */
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash === '#join-talent') {
+      document.querySelector('[data-tab="tl-join"]')?.click();
+    }
+  });
+</script>
+</body>
+</html>
