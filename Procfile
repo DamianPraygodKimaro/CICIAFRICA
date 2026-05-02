@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-apache2 public/
+web: composer install && php artisan serve --host=0.0.0.0 --port=8000
