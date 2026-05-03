@@ -161,11 +161,11 @@
     </button>
   </div>
   <div class="mobile-menu" id="mobile-menu">
-    <a href="index.html" class="mobile-menu__link">🏠 Home</a>
-    <a href="services.html" class="mobile-menu__link">🎥 Services</a>
-    <a href="culture.html" class="mobile-menu__link">🔥 Culture Feed</a>
-    <a href="talents.html" class="mobile-menu__link">⭐ Talents</a>
-    <a href="events.html" class="mobile-menu__link" style="border-bottom:none">📅 Events</a>
+    <a href="index.html" class="mobile-menu__link"> Home</a>
+    <a href="services.html" class="mobile-menu__link"> Services</a>
+    <a href="culture.html" class="mobile-menu__link"> Culture Feed</a>
+    <a href="talents.html" class="mobile-menu__link"> Talents</a>
+    <a href="events.html" class="mobile-menu__link" style="border-bottom:none"> Events</a>
     <a href="services.html#booking" class="btn btn--primary btn--block" style="margin-top:1rem">Let's Create →</a>
   </div>
 </nav>
@@ -342,23 +342,23 @@
     </div>
     <div class="why-grid">
       <div class="why-card fade-up delay-1">
-        <span class="why-card__icon" aria-hidden="true">🎯</span>
+        <span class="why-card__icon" aria-hidden="true">.</span>
         <div class="why-card__title">Deep Understanding of Gen Z &amp; Digital Culture</div>
       </div>
       <div class="why-card fade-up delay-2">
-        <span class="why-card__icon" aria-hidden="true">🏗️</span>
+        <span class="why-card__icon" aria-hidden="true">.</span>
         <div class="why-card__title">Industry-Building Mindset</div>
       </div>
       <div class="why-card fade-up delay-3">
-        <span class="why-card__icon" aria-hidden="true">⚖️</span>
+        <span class="why-card__icon" aria-hidden="true">.</span>
         <div class="why-card__title">Strategic + Creative Balance</div>
       </div>
       <div class="why-card fade-up delay-4">
-        <span class="why-card__icon" aria-hidden="true">⚡</span>
+        <span class="why-card__icon" aria-hidden="true">.</span>
         <div class="why-card__title">Fast, Adaptive Production</div>
       </div>
       <div class="why-card fade-up delay-5">
-        <span class="why-card__icon" aria-hidden="true">🌍</span>
+        <span class="why-card__icon" aria-hidden="true">.</span>
         <div class="why-card__title">Access to Diverse Emerging African Talent</div>
       </div>
     </div>
@@ -404,31 +404,31 @@
     <h2 class="section-title fade-up delay-1">Partners &amp; <span>Collaborators</span></h2>
     <p class="section-desc mb-xl fade-up delay-2">Organizations that help us empower creatives and grow Africa's creative industry.</p>
     <div class="partners-flex mb-xl fade-up delay-1">
-      <span class="partner-chip">🏢 Hm Rentals — Production spaces &amp; equipment</span>
-      <span class="partner-chip">💃 MATO Modelling Agency — Talent for campaigns</span>
-      <span class="partner-chip">🌟 Mwanga wa Kesho — Youth upliftment NGO</span>
-      <span class="partner-chip">❤️ Good Hope Foundation — Community development</span>
-      <span class="partner-chip">🎨 Chakula Gang — Creative community</span>
+      <span class="partner-chip"> Hm Rentals — Production spaces &amp; equipment</span>
+      <span class="partner-chip"> MATO Modelling Agency — Talent for campaigns</span>
+      <span class="partner-chip"> Mwanga wa Kesho — Youth upliftment NGO</span>
+      <span class="partner-chip"> Good Hope Foundation — Community development</span>
+      <span class="partner-chip"> Chakula Gang — Creative community</span>
     </div>
     <span class="section-label fade-up">Clients</span>
     <div style="display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:1rem">
       <div class="client-card fade-up delay-1">
-        <div class="client-card__icon">🚚</div>
+        <div class="client-card__icon">.</div>
         <div class="client-card__name">Geamos</div>
         <p class="client-card__desc">Multi-industry company — courier, auto parts &amp; IT solutions.</p>
       </div>
       <div class="client-card fade-up delay-2">
-        <div class="client-card__icon">🌸</div>
+        <div class="client-card__icon"></div>
         <div class="client-card__name">Deco by Star</div>
         <p class="client-card__desc">Event decoration &amp; design services.</p>
       </div>
       <div class="client-card fade-up delay-3">
-        <div class="client-card__icon">🌍</div>
+        <div class="client-card__icon"></div>
         <div class="client-card__name">Siyanto Tours</div>
         <p class="client-card__desc">Tourism &amp; travel guides across Tanzania.</p>
       </div>
       <div class="client-card fade-up delay-4">
-        <div class="client-card__icon">🍽️</div>
+        <div class="client-card__icon"></div>
         <div class="client-card__name">Shawarma</div>
         <p class="client-card__desc">Restaurant &amp; catering business.</p>
       </div>
@@ -506,7 +506,7 @@
     </div>
     <div class="footer__bottom">
       <span>© 2026 Cici Africa Creatives Co. Ltd. All rights reserved.</span>
-      <span>Made with ❤️ for African creatives</span>
+      <span>Made with  for African creatives</span>
     </div>
   </div>
 </footer>
